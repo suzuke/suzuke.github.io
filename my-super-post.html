@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>suzuke's blog</title>
+        <title>用Python在Github上寫網誌</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="suzuke's blog Atom Feed" />
 </head>
@@ -13,13 +13,18 @@
                 <nav><ul>
                     <li><a href="/pages/guan-yu.html">關於</a></li>
                     <li><a href="/category/misc.html">misc</a></li>
-                    <li><a href="/category/python.html">Python</a></li>
+                    <li class="active"><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/my-super-post.html" rel="bookmark"
+           title="Permalink to 用Python在Github上寫網誌">用Python在Github上寫網誌</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/my-super-post.html">用Python在Github上寫網誌</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2020-05-12T22:20:00+08:00">
                 Published: 二 12 5月 2020
@@ -30,7 +35,7 @@
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/pelican.html">pelican</a> <a href="/tag/publishing.html">publishing</a> </p>
-</footer><!-- /.post-info --><h1>前言</h1>
+</footer><!-- /.post-info -->      <h1>前言</h1>
 <p>其實早在很久之前，就一直聽聞 Github 可以透過靜態頁面的方式來寫網誌。但終沒有認真的找個時間好好的研究，剛好這一次的每週活動是需要練習寫文章，也就藉著這次的機會，順便研究一下到底要怎麼透過 Github 來寫網誌。</p>
 <h2>Step1. 安裝 Pelican 和建立 git repository</h2>
 <p>首先必須先安裝 <strong>Pelican</strong> 和 <strong>ghp-import</strong>，我們可以非常簡單地透過 pip 來安裝。</p>
@@ -146,37 +151,11 @@ $ git push origin content
 </pre></div>
 
 
-<h2>Step5.</h2>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<h2>Step5.</h2>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/di-yi-pian-wen-zhang.html" rel="bookmark"
-                           title="Permalink to 第一篇文章">第一篇文章</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-05-12T00:00:00+08:00">
-                Published: 二 12 5月 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/suzuke.html">suzuke</a>
-        </address>
-<p>In <a href="/category/misc.html">misc</a>.</p>
-
-</footer><!-- /.post-info -->                <h1>測試文章</h1>
-<p>這是我的第一篇測試文章</p>
-                <a class="readmore" href="/di-yi-pian-wen-zhang.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

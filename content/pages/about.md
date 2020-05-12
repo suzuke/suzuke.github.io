@@ -5,4 +5,4 @@ date: 2020.05.12
 
 我是suzuke
 
-[my_photo[: {static}/images/me.jpeg
+[my_photo]: {static}/images/me.jpeg

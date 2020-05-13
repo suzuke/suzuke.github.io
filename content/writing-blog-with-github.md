@@ -13,17 +13,17 @@ Summary:
 ## Step1. 安裝 Pelican 和建立 git repository
 首先必須先安裝 **Pelican** 和 **ghp-import**，我們可以非常簡單地透過 pip 來安裝。
 
-```$ pip install pelican ghp-import```
+`$ pip install pelican ghp-import`
 
 Pelican 提供兩種編寫文章的格式，分別是 reStructuredText 跟 Markdown，因為我自己本身對 Markdown比較熟悉，所以這邊我選擇使用 Markdown，一樣透過 pip 來安裝 Markdown。
 
-```$ pip install Markdown```
+`$ pip install Markdown`
 
 安裝完所需要的軟體，再來我們需要在 Github 上建立一個空的 git 資料庫(repository)。
 不知道怎麼建立 git 資料庫的人，可以參考[這裡](https://help.github.com/en/github/getting-started-with-github/create-a-repo)。
 記得這個資料庫的命名一定要是以下這種形式：
 
-```https://github.com/username/username.github.io```
+`https://github.com/username/username.github.io`
 
 接著我們就把它 clone 下來吧！
 
@@ -42,7 +42,7 @@ Switched to a new branch 'content'
 ```
 
 ## Step3. 設定 Pelican
-現在我們要開始對 Pelican 做設定，Pelican	提供了一個快速的設定工具 **pelican-quickstart**，只要依序回答完問題，就完成設定了。
+現在我們要開始對 Pelican 做設定，Pelican	提供了一個快速的設定工具 **pelican-quickstart**，只要依序回答完問題，就可以完成設定了。
 
 ```
 $ pelican-quickstart
@@ -106,14 +106,14 @@ Date: 2020-05-12 20:20
 Modified: 2020-05-12 23:30
 Category: Python
 Tags: pelican, publishing
-Slug: my-super-post
+Slug: writing-python-with-github
 Authors: Suzuke
 Summary: 我是摘要
 
 文章的內容在這裡唷！
 ```
 
-編輯 **關於我** 的頁面，打開 pages/about.md
+編輯 **關於我** 的頁面，打開 `pages/about.md`
 
 ```
 title: 關於我
@@ -126,13 +126,16 @@ date: 2020-05-12
 
 `$ pelican content -o output -s publishconf.py`
 
-使用 ghp-import 把 output 的內容都 commit 到 master branch 上：
+Pelican 也提供本地端預覽 `http://localhost:8000/`
 
-`$ ghp-import -m "Generate Pelican site" --no-jekyll -b master output`
+`$ pelican --listen`
 
-把本地端的 master 推送到遠端 github 上：
+都確認沒問題之後使用 ghp-import 把 output 的內容都 commit & push 到 master branch 上：
 
-`$ git push origin master`
+```
+$ ghp-import -m "Generate Pelican site" --no-jekyll -b master output
+$ git push origin master
+```
 
 最後把本地端 content 裡的 Markdown 原始文件都 commit & push 到遠端 github 上：
 

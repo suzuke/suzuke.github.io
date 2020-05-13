@@ -25,7 +25,7 @@ Switched to a new branch &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/sp
 
 
 &lt;h2&gt;Step3. 設定 Pelican&lt;/h2&gt;
-&lt;p&gt;現在我們要開始對 Pelican 做設定，Pelican    提供了一個快速的設定工具 &lt;strong&gt;pelican-quickstart&lt;/strong&gt;，只要依序回答完問題，就完成設定了。&lt;/p&gt;
+&lt;p&gt;現在我們要開始對 Pelican 做設定，Pelican    提供了一個快速的設定工具 &lt;strong&gt;pelican-quickstart&lt;/strong&gt;，只要依序回答完問題，就可以完成設定了。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="n"&gt;Welcome&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;v4&lt;/span&gt;&lt;span class="mf"&gt;.2.0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
@@ -85,7 +85,7 @@ $ touch pages/about.md
 &lt;span class="n"&gt;Modified&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;
 &lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
 &lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;publishing&lt;/span&gt;
-&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;writing&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;
 &lt;span class="n"&gt;Authors&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Suzuke&lt;/span&gt;
 &lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;我是摘要&lt;/span&gt;
 
@@ -93,7 +93,7 @@ $ touch pages/about.md
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;編輯 &lt;strong&gt;關於我&lt;/strong&gt; 的頁面，打開 pages/about.md&lt;/p&gt;
+&lt;p&gt;編輯 &lt;strong&gt;關於我&lt;/strong&gt; 的頁面，打開 &lt;code&gt;pages/about.md&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;關於我&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="nc"&gt;date&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
@@ -103,10 +103,14 @@ $ touch pages/about.md
 
 &lt;p&gt;使用 Pelican 產生靜態網頁到 output 資料夾：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;$ pelican content -o output -s publishconf.py&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;使用 ghp-import 把 output 的內容都 commit 到 master branch 上：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ ghp-import -m "Generate Pelican site" --no-jekyll -b master output&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;把本地端的 master 推送到遠端 github 上：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Pelican 也提供本地端預覽 &lt;code&gt;http://localhost:8000/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ pelican --listen&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;都確認沒問題之後使用 ghp-import 把 output 的內容都 commit &amp;amp; push 到 master branch 上：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Generate Pelican site&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jekyll&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;最後把本地端 content 裡的 Markdown 原始文件都 commit &amp;amp; push 到遠端 github 上：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git add content
 $ git commit -m &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;added a first post, a photo and an about page

@@ -60,7 +60,7 @@ Switched to a new branch <span class="s1">&#39;content&#39;</span>
 
 
 <h2>Step3. 設定 Pelican</h2>
-<p>現在我們要開始對 Pelican 做設定，Pelican    提供了一個快速的設定工具 <strong>pelican-quickstart</strong>，只要依序回答完問題，就完成設定了。</p>
+<p>現在我們要開始對 Pelican 做設定，Pelican    提供了一個快速的設定工具 <strong>pelican-quickstart</strong>，只要依序回答完問題，就可以完成設定了。</p>
 <div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
 <span class="n">Welcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"> </span><span class="n">v4</span><span class="mf">.2.0</span><span class="p">.</span><span class="w"></span>
 
@@ -120,7 +120,7 @@ $ touch pages/about.md
 <span class="n">Modified</span><span class="p">:</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">12</span> <span class="mi">23</span><span class="p">:</span><span class="mi">30</span>
 <span class="n">Category</span><span class="p">:</span> <span class="n">Python</span>
 <span class="n">Tags</span><span class="p">:</span> <span class="n">pelican</span><span class="p">,</span> <span class="n">publishing</span>
-<span class="n">Slug</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">super</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Slug</span><span class="p">:</span> <span class="n">writing</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">github</span>
 <span class="n">Authors</span><span class="p">:</span> <span class="n">Suzuke</span>
 <span class="n">Summary</span><span class="p">:</span> <span class="err">我是摘要</span>
 
@@ -128,7 +128,7 @@ $ touch pages/about.md
 </pre></div>
 
 
-<p>編輯 <strong>關於我</strong> 的頁面，打開 pages/about.md</p>
+<p>編輯 <strong>關於我</strong> 的頁面，打開 <code>pages/about.md</code></p>
 <div class="highlight"><pre><span></span><span class="nl">title</span><span class="p">:</span><span class="w"> </span><span class="n">關於我</span><span class="w"></span>
 <span class="nc">date</span><span class="err">:</span><span class="w"> </span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">12</span><span class="w"></span>
 
@@ -138,10 +138,14 @@ $ touch pages/about.md
 
 <p>使用 Pelican 產生靜態網頁到 output 資料夾：</p>
 <p><code>$ pelican content -o output -s publishconf.py</code></p>
-<p>使用 ghp-import 把 output 的內容都 commit 到 master branch 上：</p>
-<p><code>$ ghp-import -m "Generate Pelican site" --no-jekyll -b master output</code></p>
-<p>把本地端的 master 推送到遠端 github 上：</p>
-<p><code>$ git push origin master</code></p>
+<p>Pelican 也提供本地端預覽 <code>http://localhost:8000/</code></p>
+<p><code>$ pelican --listen</code></p>
+<p>都確認沒問題之後使用 ghp-import 把 output 的內容都 commit &amp; push 到 master branch 上：</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Generate Pelican site&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">jekyll</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">output</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+
+
 <p>最後把本地端 content 裡的 Markdown 原始文件都 commit &amp; push 到遠端 github 上：</p>
 <div class="highlight"><pre><span></span>$ git add content
 $ git commit -m <span class="err">&#39;</span>added a first post, a photo and an about page

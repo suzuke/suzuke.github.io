@@ -1,33 +1,34 @@
 Title: 用Python在Github上寫網誌
 Date: 2020-05-12 22:20
+Modified: 2020-05-13 21:10
 Category: Python
 Tags: pelican, publishing
-Slug: my-super-post
+Slug: writing-blog-with-github
 Authors: suzuke
 Summary: 
 
-# 前言
+## Step0. 前言
 其實早在很久之前，就一直聽聞 Github 可以透過靜態頁面的方式來寫網誌。但終沒有認真的找個時間好好的研究，剛好這一次的每週活動是需要練習寫文章，也就藉著這次的機會，順便研究一下到底要怎麼透過 Github 來寫網誌。
 
 ## Step1. 安裝 Pelican 和建立 git repository
 首先必須先安裝 **Pelican** 和 **ghp-import**，我們可以非常簡單地透過 pip 來安裝。
 
-`$ pip install pelican ghp-import`
+```$ pip install pelican ghp-import```
 
 Pelican 提供兩種編寫文章的格式，分別是 reStructuredText 跟 Markdown，因為我自己本身對 Markdown比較熟悉，所以這邊我選擇使用 Markdown，一樣透過 pip 來安裝 Markdown。
 
-`$ pip install Markdown`
+```$ pip install Markdown```
 
 安裝完所需要的軟體，再來我們需要在 Github 上建立一個空的 git 資料庫(repository)。
 不知道怎麼建立 git 資料庫的人，可以參考[這裡](https://help.github.com/en/github/getting-started-with-github/create-a-repo)。
 記得這個資料庫的命名一定要是以下這種形式：
 
-`https://github.com/username/username.github.io`
+```https://github.com/username/username.github.io```
 
 接著我們就把它 clone 下來吧！
 
 ```
-$ git clone https://GitHub.com/username/username.github.io blog
+$ git clone https://github.com/username/username.github.io blog
 $ cd blog
 ```
 
@@ -45,28 +46,27 @@ Switched to a new branch 'content'
 
 ```
 $ pelican-quickstart
-Welcome to pelican-quickstart v3.7.1.
+Welcome to pelican-quickstart v4.2.0.
 
 This script will help you create a new Pelican-based website.
 
 Please answer the following questions so this script can generate the files
 needed by Pelican.
 
-> Where do you want to create your new web site? [.]  
-> What will be the title of this web site? Super blog
-> Who will be the author of this web site? username
-> What will be the default language of this web site? [en]
-> Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) n
-> Do you want to enable article pagination? (Y/n)
-> How many articles per page do you want? [10]
-> What is your time zone? [Europe/Paris] US/Central
-> Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) y
-> Do you want an auto-reload & simpleHTTP script to assist with theme and site development? (Y/n) y
-> Do you want to upload your website using FTP? (y/N) n
-> Do you want to upload your website using SSH? (y/N) n
-> Do you want to upload your website using Dropbox? (y/N) n
-> Do you want to upload your website using S3? (y/N) n
-> Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+> Where do you want to create your new web site? [.] 
+> What will be the title of this web site? suzuke's blog
+> Who will be the author of this web site? suzuke
+> What will be the default language of this web site? [zh] 
+> Do you want to specify a URL prefix? e.g., https://example.com   (Y/n) n
+> Do you want to enable article pagination? (Y/n) 
+> How many articles per page do you want? [10] 
+> What is your time zone? [Europe/Paris] Asia/Taipei
+> Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n) 
+> Do you want to upload your website using FTP? (y/N) 
+> Do you want to upload your website using SSH? (y/N) 
+> Do you want to upload your website using Dropbox? (y/N) 
+> Do you want to upload your website using S3? (y/N) 
+> Do you want to upload your website using Rackspace Cloud Files? (y/N) 
 > Do you want to upload your website using GitHub Pages? (y/N) y
 > Is this your personal page (username.github.io)? (y/N) y
 Done. Your new project is available at /Users/username/blog
@@ -142,4 +142,6 @@ $ git commit -m 'added a first post, a photo and an about page
 $ git push origin content
 ```
 
-## Step5. 
+## Step5. 參考資料
+1. [run-your-blog-github-pages-python](https://opensource.com/article/19/5/run-your-blog-github-pages-python)
+2. [Pelican docs](https://docs.getpelican.com/en/stable/)

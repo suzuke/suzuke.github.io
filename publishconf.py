@@ -23,3 +23,11 @@ DELETE_OUTPUT_DIRECTORY = True
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight', 'guess_lang':'False'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+    },
+}

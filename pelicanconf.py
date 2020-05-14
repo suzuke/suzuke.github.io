@@ -42,3 +42,6 @@ MARKDOWN = {
         'markdown.extensions.meta': {},
     },
 }
+
+# Themes
+THEME = '/Users/suzuke/Documents/Blog/pelican-themes/aboutwilson'

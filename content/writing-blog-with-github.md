@@ -1,6 +1,6 @@
 Title: 用Python在Github上寫網誌
 Date: 2020-05-12 22:20
-Modified: 2020-05-13 21:10
+Modified: 2020-05-24 00:23
 Category: Python
 Tags: pelican, publishing
 Slug: writing-blog-with-github
@@ -13,17 +13,17 @@ Summary:
 ## Step1. 安裝 Pelican 和建立 git repository
 首先必須先安裝 **Pelican** 和 **ghp-import**，我們可以非常簡單地透過 pip 來安裝。
 
-`$ pip install pelican ghp-import`
+```$ pip install pelican ghp-import```
 
 Pelican 提供兩種編寫文章的格式，分別是 reStructuredText 跟 Markdown，因為我自己本身對 Markdown比較熟悉，所以這邊我選擇使用 Markdown，一樣透過 pip 來安裝 Markdown。
 
-`$ pip install Markdown`
+```$ pip install Markdown```
 
 安裝完所需要的軟體，再來我們需要在 Github 上建立一個空的 git 資料庫(repository)。
 不知道怎麼建立 git 資料庫的人，可以參考[這裡](https://help.github.com/en/github/getting-started-with-github/create-a-repo)。
 記得這個資料庫的命名一定要是以下這種形式：
 
-`https://github.com/username/username.github.io`
+```https://github.com/username/username.github.io```
 
 接著我們就把它 clone 下來吧！
 
@@ -124,11 +124,11 @@ date: 2020-05-12
 ```
 使用 Pelican 產生靜態網頁到 output 資料夾：
 
-`$ pelican content -o output -s publishconf.py`
+```$ pelican content -o output -s publishconf.py```
 
 Pelican 也提供本地端預覽 `http://localhost:8000/`
 
-`$ pelican --listen`
+```$ pelican --listen```
 
 都確認沒問題之後使用 ghp-import 把 output 的內容都 commit & push 到 master branch 上：
 
@@ -136,14 +136,52 @@ Pelican 也提供本地端預覽 `http://localhost:8000/`
 $ ghp-import -m "Generate Pelican site" --no-jekyll -b master output
 $ git push origin master
 ```
+到這邊其實就已經可以到 **https://username.github.io/** 查看結果是否正確。  
+但懶人如我，每次都要打上面 ghp-import 跟 git push 的指令實在太麻煩，這時就輪到 **Makefile** 上場救援了。打開 **Makefile** 看一下內容：
 
-最後把本地端 content 裡的 Markdown 原始文件都 commit & push 到遠端 github 上：
+```
+GITHUB_PAGES_BRANCH=master
+...
+中間省略
+...
+publish:
+	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+
+github: publish
+	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+	git push origin $(GITHUB_PAGES_BRANCH)
+```
+可以知道其實我們可以使用 `make github` 替代上面所說的 ghp-import 跟 git push 指令，這對懶人實在是一大福音啊！
+
+最後再把本地端 content 裡的 Markdown 原始文件都 commit & push 到遠端 github 上：
 
 ```
 $ git add content
 $ git commit -m 'added a first post, a photo and an about page
 $ git push origin content
 ```
+當然你也可以在 Makefile 加入一點修改：
+
+```
+GITHUB_PAGES_BRANCH=master
+GITHUB_CONTENT_BRANCH=content
+...
+中間省略
+...
+publish:
+	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+
+github: publish
+	ghp-import -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+	git push origin $(GITHUB_PAGES_BRANCH)
+
+content:
+	git add content
+	git commit -m "update content"
+	git push origin $(GITHUB_CONTENT_BRANCH)
+
+``` 
+如此一來，就能使用 `make content` 來 commit & push 到 github上囉。
 
 ## Step5. 參考資料
 1. [run-your-blog-github-pages-python](https://opensource.com/article/19/5/run-your-blog-github-pages-python)

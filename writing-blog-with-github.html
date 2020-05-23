@@ -174,6 +174,22 @@ $ git push origin content
 </ol></div>
 	<hr>
 	<h2>Comments</h2>
+<div id="gitalk-container" class="mdl-card__supporting-text el-comments">
+</div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '9ffd664cad78b4b2b3d9',
+        clientSecret: '8b28b366159e9e8c9a953a8f5a7bf9fc42cd4844',
+        repo: 'suzuke.github.io',
+        owner: 'suzuke',
+        admin: ['suzuke',],
+        id: '二 12 5月 2020-writing-blog-with-github',
+        distractionFreeMode: false,
+    })
+    gitalk.render('gitalk-container')
+</script>
 </div>
 		</div>
 	</div> 	<!-- <hr> -->

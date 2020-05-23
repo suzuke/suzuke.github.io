@@ -45,3 +45,9 @@ MARKDOWN = {
 
 # Themes
 THEME = '/Users/suzuke/Documents/Blog/pelican-themes/aboutwilson'
+
+# Gittalk
+GITALK_GITHUB_ID = 'suzuke'
+REPO_TO_STORE_COMMENTS = 'suzuke.github.io'
+OAUTH_CLIENT_ID = '9ffd664cad78b4b2b3d9'
+OAUTH_CLIENT_SECRET = '8b28b366159e9e8c9a953a8f5a7bf9fc42cd4844'

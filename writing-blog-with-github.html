@@ -160,13 +160,50 @@ $ git push origin master
 </pre></div>
 
 
-<p>最後把本地端 content 裡的 Markdown 原始文件都 commit &amp; push 到遠端 github 上：</p>
+<p>到這邊其實就已經可以到 <strong>https://username.github.io/</strong> 查看結果是否正確。<br />
+但懶人如我，每次都要打上面 ghp-import 跟 git push 的指令實在太麻煩，這時就輪到 <strong>Makefile</strong> 上場救援了。打開 <strong>Makefile</strong> 看一下內容：</p>
+<div class="highlight"><pre><span></span>GITHUB_PAGES_BRANCH=master
+...
+中間省略
+...
+publish:
+    $(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+
+github: publish
+    ghp-import -m &quot;Generate Pelican site&quot; -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+    git push origin $(GITHUB_PAGES_BRANCH)
+</pre></div>
+
+
+<p>可以知道其實我們可以使用 <code>make github</code> 替代上面所說的 ghp-import 跟 git push 指令，這對懶人實在是一大福音啊！</p>
+<p>最後再把本地端 content 裡的 Markdown 原始文件都 commit &amp; push 到遠端 github 上：</p>
 <div class="highlight"><pre><span></span>$ git add content
 $ git commit -m &#39;added a first post, a photo and an about page
 $ git push origin content
 </pre></div>
 
 
+<p>當然你也可以在 Makefile 加入一點修改：</p>
+<div class="highlight"><pre><span></span>GITHUB_PAGES_BRANCH=master
+GITHUB_CONTENT_BRANCH=content
+...
+中間省略
+...
+publish:
+    $(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+
+github: publish
+    ghp-import -m &quot;Generate Pelican site&quot; -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
+    git push origin $(GITHUB_PAGES_BRANCH)
+
+content:
+    git add content
+    git commit -m &quot;update content&quot;
+    git push origin $(GITHUB_CONTENT_BRANCH)
+</pre></div>
+
+
+<p>如此一來，就能使用 <code>make content</code> 來 commit &amp; push 到 github上囉。</p>
 <h2>Step5. 參考資料</h2>
 <ol>
 <li><a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">run-your-blog-github-pages-python</a></li>

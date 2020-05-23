@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>suzuke's blog - Hackintosh</title><link href="/" rel="alternate"></link><link href="/feeds/hackintosh.atom.xml" rel="self"></link><id>/</id><updated>2020-05-24T00:48:00+08:00</updated><entry><title>LG Gram 黑蘋果全記錄</title><link href="/lg-gram-hackintosh.html" rel="alternate"></link><published>2020-05-24T00:48:00+08:00</published><updated>2020-05-24T00:48:00+08:00</updated><author><name>suzuke</name></author><id>tag:None,2020-05-24:/lg-gram-hackintosh.html</id><summary type="html">&lt;p&gt;記錄在LG-Gram 筆電上安裝黑蘋果的歷程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Step0. 前言&lt;/h1&gt;
+&lt;p&gt;黑蘋果 (Hackintosh) 的意思即是在在非蘋果授權的 x86 架構電腦上安裝 Ｍac OS ， Hackintosh 一詞也是衍生自蘋果官方的電腦系統名稱 Macintosh。  &lt;br /&gt;
+早先，蘋果電腦使的 CPU 架構都是 IBM 所生產的 PowerPC 處理器，直到 2005 年開始，才轉由與 Intel 合作使用 x86-64架構的處理器，從這個時候開始才大幅降低了黑蘋果的門檻，讓一般不需要具備太深入技術的人也可以進入黑蘋果的世界。&lt;/p&gt;
+&lt;h1&gt;Step1.&lt;/h1&gt;</content><category term="Hackintosh"></category><category term="lg-gram"></category><category term="hackintosh"></category><category term="黑蘋果"></category></entry></feed>

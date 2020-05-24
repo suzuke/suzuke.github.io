@@ -156,8 +156,8 @@
 </tr>
 </tbody>
 </table>
-<p>LG-Gram 對應的 SSDT Patch 在這 <a href="https://github.com/suzuke/LG-Gram-13z980-Opencore/blob/master/ACPI_Patch/SSDT-FNKey.dsl">SSDT-FNKey</a>。</p>
-<p>需要注意的是，根據 ACPI 中 _OSI 的參數不同，同一個 FN 組合鍵所對應的 Query 函數也有可能不一樣，上面所得到的資料，並 <strong>沒有</strong> 使用 <a href="https://github.com/RehabMan/OS-X-USB-Inject-All/blob/master/SSDT-XOSI.dsl">_OSI to XOSI</a> 更名。</p>
+<p>根據上面的資料所做的 SSDT Patch 在這 <a href="https://github.com/suzuke/LG-Gram-13z980-Opencore/blob/master/ACPI_Patch/SSDT-FNKey.dsl">SSDT-FNKey</a> (only for LG-Gram) 。</p>
+<p>需要注意的是，根據 ACPI 中 _OSI 的參數不同，同一個 FN 組合鍵所對應的 Query 函數也有可能不一樣，上面所得到的資料，並 <strong>沒有</strong> 使用 <a href="https://github.com/RehabMan/OS-X-USB-Inject-All/blob/master/SSDT-XOSI.dsl">_OSI to XOSI</a> 更名，所以如果你想直接使用我提供的SSDT-FNKey Patch，那你也不應該使用 _OSI to XOSI 更名。</p>
 <h2>電池電量顯示修正</h2>
 <h1>Step4. 參考</h1>
 <p><a href="https://www.cjscope.com.tw/cht/faq_detail.php?serial=45">EC、BIOS、vBIOS是什麼?</a></p></div>

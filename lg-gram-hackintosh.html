@@ -52,10 +52,104 @@
 		</span>
 	</div>
 	<div itemprop="articleBody" class="article-body"><h1>Step0. 前言</h1>
-<p>前陣子因為工作上需要使用到 IOS 的開發環境，而 IOS 綁定了 Mac OS 底下的 Xcode ，但是因為我手上的設備是 2012 年的 Macmini，那速度可真的不是一般人能忍的。 但是新款 Macmini 的價格也是令人卻步，在考慮到性價比還有自己愛折騰的心之下，開始有了黑蘋果的想法。</p>
+<p>前陣子因為工作上需要使用到 IOS 的開發環境，而 IOS 綁定了 Mac OS 底下的 Xcode ，但是因為我手上的設備是 2012 年的 Macmini，那速度可真的不是一般人能忍的。 但是新款 Macmini 的價格又令人卻步，在考慮到性價比還有自己愛折騰的心之下，開始有了黑蘋果的想法。</p>
 <h1>Step1. 認識黑蘋果(Hackintosh)</h1>
 <p>黑蘋果 (Hackintosh) 的意思即是在在非蘋果授權的 x86 架構電腦上安裝 Ｍac OS ， Hackintosh 一詞也是衍生自蘋果官方的電腦系統名稱 Macintosh。  <br />
-早先，蘋果電腦使的 CPU 架構都是 IBM 所生產的 PowerPC 處理器，直到 2005 年開始，才轉由與 Intel 合作使用 x86-64架構的處理器，從這個時候開始才大幅降低了黑蘋果的門檻，讓一般不需要具備太深入技術的人也可以進入黑蘋果的世界。</p></div>
+早先，蘋果電腦使的 CPU 架構都是 IBM 所生產的 PowerPC 處理器，直到 2005 年開始，才轉由與 Intel 合作使用 x86-64架構的處理器，從這個時候開始才大幅降低了黑蘋果的門檻，讓一般不需要具備太深入技術的人也可以進入黑蘋果的世界。    </p>
+<h2>EFI Bootloader</h2>
+<h2>DSDT/SSDT</h2>
+<h1>Step2. 安裝前準備</h1>
+<h2>BIOS 設定</h2>
+<h2>製作安裝隨身碟</h2>
+<h1>Step3. 安裝完成後修正</h1>
+<h2>觸控板驅動 (VoodooI2C)</h2>
+<h2>FN Key 功能修正</h2>
+<table>
+<thead>
+<tr>
+<th align="center">FN Key</th>
+<th align="center">EC Query function</th>
+<th align="center">對應功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">FN + F1</td>
+<td align="center">_QFF</td>
+<td align="center">Null</td>
+</tr>
+<tr>
+<td align="center">FN + F2</td>
+<td align="center">_Q40</td>
+<td align="center">減低亮度</td>
+</tr>
+<tr>
+<td align="center">FN + F3</td>
+<td align="center">_Q40</td>
+<td align="center">增加亮度</td>
+</tr>
+<tr>
+<td align="center">FN + F4</td>
+<td align="center">_Q34</td>
+<td align="center">睡眠</td>
+</tr>
+<tr>
+<td align="center">FN + F5</td>
+<td align="center">_QFF</td>
+<td align="center">觸控板開關</td>
+</tr>
+<tr>
+<td align="center">FN + F6</td>
+<td align="center">_Q36</td>
+<td align="center">飛航開關</td>
+</tr>
+<tr>
+<td align="center">FN + F7</td>
+<td align="center">_Q37</td>
+<td align="center">多螢幕連結</td>
+</tr>
+<tr>
+<td align="center">FN + F8</td>
+<td align="center">_Q30</td>
+<td align="center">鍵盤燈開關</td>
+</tr>
+<tr>
+<td align="center">FN + F9</td>
+<td align="center">_Q40</td>
+<td align="center">螢幕暖色</td>
+</tr>
+<tr>
+<td align="center">FN + F10</td>
+<td align="center">Null</td>
+<td align="center">音量靜音</td>
+</tr>
+<tr>
+<td align="center">FN + F11</td>
+<td align="center">Null</td>
+<td align="center">音量減(-)</td>
+</tr>
+<tr>
+<td align="center">FN + F12</td>
+<td align="center">Null</td>
+<td align="center">音量增(+)</td>
+</tr>
+<tr>
+<td align="center">FN + PrtSc</td>
+<td align="center">Null</td>
+<td align="center">Null</td>
+</tr>
+<tr>
+<td align="center">## 電池電量顯示修正</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">#Step4. 參考</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></div>
 	<hr>
 	<h2>Comments</h2>
 <div id="gitalk-container" class="mdl-card__supporting-text el-comments">

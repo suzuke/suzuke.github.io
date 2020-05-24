@@ -11,9 +11,30 @@
 &lt;h2&gt;製作安裝隨身碟&lt;/h2&gt;
 &lt;h1&gt;Step3. 安裝完成後修正&lt;/h1&gt;
 &lt;h2&gt;觸控板驅動 (VoodooI2C)&lt;/h2&gt;
+&lt;p&gt;觸控板驅動向來都是黑蘋果中最難解決的問題，筆記型電腦的觸控板在黑蘋果中的支援度都不太高。幸運的是，目前 I2C 觸控板主流都是使用 &lt;a href="https://github.com/VoodooI2C/VoodooI2C"&gt;VoodooI2C&lt;/a&gt; ，而 LG-Gram z980 的 I2C 觸控板 (pci8086,9d60) 是被完美支援 (GPIO interrupts) 的。&lt;/p&gt;
+&lt;p&gt;不過雖然說是完美支援，我們仍然需要使用 SSDT Patch 來確保 GPIO 是正確的被啟用。另外根據 LG-Gram 的 &lt;a href="https://raw.githubusercontent.com/suzuke/LG-Gram-13z980-Opencore/master/ACPI_Origin/DSDT.dsl"&gt;ACPI 定義&lt;/a&gt; ，觸控板 (TPD0) 會隨著當前的作業系統(_OSI)而有不同的啟用狀態：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Method (_STA, 0, NotSerialized)  // _STA: Status
+{
+    If (LEqual (PTPS, One))
+    {
+        Return (0x0F)
+    }
+
+    If (LOr (LEqual (SDS0, 0x05), LOr (LEqual (SDS0, One), LOr (LEqual (SDS0, 0x02), LEqual (SDS0, 0x06)))))
+    {
+         Return (0x0F)
+    }
+
+    Return (Zero)
+ }
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;我選擇的做法是直接將原本的 TPD0 禁用，再使用 &lt;a href="https://github.com/suzuke/LG-Gram-13z980-Opencore/blob/master/ACPI_Patch/SSDT-TPXX.dsl"&gt;SSDT-TPXX&lt;/a&gt; 來建立出新的 TPDX 裝置。
+禁用設備的方式可以參考 &lt;a href="https://github.com/daliansky/OC-little/tree/master/20-I2C%E4%B8%93%E7%94%A8%E9%83%A8%E4%BB%B6"&gt;OC-little I2C專用部件&lt;/a&gt;。&lt;/p&gt;
 &lt;h2&gt;FN Key 功能修正&lt;/h2&gt;
 &lt;p&gt;筆記型電腦的 FN Key 功能通常都伴隨著 EC（Embed Controller，嵌入式控制器）的 Query 事件，也就是說每當我們按了某個 FN + Fx 的組合鍵時，同時在 ACPI 中也會有相對應的函數 (_Qxx) 被呼叫。所以我們只要找出每一個 FN組合鍵對應的 Query 函數，就可以實作出應有的功能。&lt;/p&gt;
-&lt;p&gt;以下這邊就是透過 &lt;a href="https://github.com/RehabMan/OS-X-ACPI-Debug"&gt;ACPIDebug&lt;/a&gt; 在 Query 函數中印出 log 找出的：&lt;/p&gt;
+&lt;p&gt;以下這邊就是透過 &lt;a href="https://github.com/daliansky/OC-little/tree/master/18-ACPIDebug"&gt;ACPIDebug&lt;/a&gt; 在 Query 函數中印出 log 找出的：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -105,10 +126,11 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;根據上面的資料所做的 SSDT Patch 在這 &lt;a href="https://github.com/suzuke/LG-Gram-13z980-Opencore/blob/master/ACPI_Patch/SSDT-FNKey.dsl"&gt;SSDT-FNKey&lt;/a&gt; (only for LG-Gram) 。&lt;/p&gt;
-&lt;p&gt;需要注意的是，根據 ACPI 中 _OSI 的參數不同，同一個 FN 組合鍵所對應的 Query 函數也有可能不一樣，上面所得到的資料，並 &lt;strong&gt;沒有&lt;/strong&gt; 使用 &lt;a href="https://github.com/RehabMan/OS-X-USB-Inject-All/blob/master/SSDT-XOSI.dsl"&gt;_OSI to XOSI&lt;/a&gt; 更名，所以如果你想直接使用我提供的SSDT-FNKey Patch，那你也不應該使用 _OSI to XOSI 更名。&lt;/p&gt;
+&lt;p&gt;需要注意的是，根據 ACPI 中 _OSI 的參數不同，同一個 FN 組合鍵所對應的 Query 函數也有可能不一樣，上面所得到的資料，並 &lt;strong&gt;沒有&lt;/strong&gt; 使用 &lt;a href="https://github.com/daliansky/OC-little/tree/master/04-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%A1%A5%E4%B8%81"&gt;_OSI to XOSI&lt;/a&gt; 更名，所以如果你想直接使用我提供的SSDT-FNKey Patch，那你也不應該使用 _OSI to XOSI 更名。&lt;/p&gt;
 &lt;h2&gt;電池電量顯示修正&lt;/h2&gt;
 &lt;h1&gt;Step4. 參考&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://www.cjscope.com.tw/cht/faq_detail.php?serial=45"&gt;EC、BIOS、vBIOS是什麼?&lt;/a&gt;&lt;/p&gt;</content><category term="Hackintosh"></category><category term="lg-gram"></category><category term="hackintosh"></category><category term="黑蘋果"></category></entry><entry><title>用Python在Github上寫網誌</title><link href="/writing-blog-with-github.html" rel="alternate"></link><published>2020-05-12T22:20:00+08:00</published><updated>2020-05-24T00:23:00+08:00</updated><author><name>suzuke</name></author><id>tag:None,2020-05-12:/writing-blog-with-github.html</id><summary type="html"></summary><content type="html">&lt;h2&gt;Step0. 前言&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.cjscope.com.tw/cht/faq_detail.php?serial=45"&gt;EC、BIOS、vBIOS是什麼?&lt;/a&gt;
+&lt;a href="https://github.com/daliansky/OC-little"&gt;OC-little&lt;/a&gt;&lt;/p&gt;</content><category term="Hackintosh"></category><category term="lg-gram"></category><category term="hackintosh"></category><category term="黑蘋果"></category></entry><entry><title>用Python在Github上寫網誌</title><link href="/writing-blog-with-github.html" rel="alternate"></link><published>2020-05-12T22:20:00+08:00</published><updated>2020-05-24T00:23:00+08:00</updated><author><name>suzuke</name></author><id>tag:None,2020-05-12:/writing-blog-with-github.html</id><summary type="html"></summary><content type="html">&lt;h2&gt;Step0. 前言&lt;/h2&gt;
 &lt;p&gt;其實早在很久之前，就一直聽聞 Github 可以透過靜態頁面的方式來寫網誌。但終沒有認真的找個時間好好的研究，剛好這一次的每週活動是需要練習寫文章，也就藉著這次的機會，順便研究一下到底要怎麼透過 Github 來寫網誌。&lt;/p&gt;
 &lt;h2&gt;Step1. 安裝 Pelican 和建立 git repository&lt;/h2&gt;
 &lt;p&gt;首先必須先安裝 &lt;strong&gt;Pelican&lt;/strong&gt; 和 &lt;strong&gt;ghp-import&lt;/strong&gt;，我們可以非常簡單地透過 pip 來安裝。&lt;/p&gt;
